@@ -11,20 +11,49 @@ requirements or Invalid if it does not. Assume that any letters in the user’s 
  program per the below, wherein is_valid returns True if s meets all requirements and False if it does not. Assume that
    s will be a str. You’re welcome to implement additional functions for is_valid to call (e.g., one function per 
    requirement)."""
+import string
 
 def main():
     is_Valid(getPlate())
 
 def getPlate():
-    return input('Ingrese el plate in uppercase: ')
+    return input('Type the plate in uppercase: ')
 
 def is_Valid(plate):
 
+    print(list(string.ascii_lowercase))
+    puncValidation(plate)
+    minMaxCharacters(plate)
+    minLetras(plate)
+    
+        
+
+def puncValidation(plate):
+
     for letter in plate:
-        if ' ' in plate or '.' in plate or ',' in plate:
-            print('Invalid')
+        for signos in string.punctuation:
+            if signos in letter:
+                print("Invalid. It hasn't contain any punctuation sign")
+                
+            
+def minMaxCharacters(plate):
+    if len(plate) >=2 or len(plate)<=6:
+        print("")
+    else:
+        print("Invalid. Plate has to contain minimun 2 or maximun 6 characters")
+        
 
 
+def minLetras(plate):
+
+    for characters in plate:
+        i = 0
+        print(f"i = {i}")
+        if i == 0 and type(characters) is not str:
+            print("Invalid. First is a letter")
+        elif i == 2 and characters is not str():
+            print("Invalid. Second is a letter")
+        i = i+1
 
 
 if __name__ == ("__main__"):
